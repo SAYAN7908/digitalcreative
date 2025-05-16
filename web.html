@@ -1079,6 +1079,21 @@
                 this.reset();
             });
         }
+        <script>
+  const playBtn = document.querySelector('.play-btn');
+  const video = document.querySelector('.project-video video');
+
+  playBtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      playBtn.style.display = 'none'; // Hide play button while playing
+    } else {
+      video.pause();
+      playBtn.style.display = 'block'; // Show play button when paused
+    }
+  });
+</script>
+
     </script>
 </body>
 </html>
