@@ -799,27 +799,27 @@
         </div>
         <div class="projects-grid">
             <!-- Project 1 -->
-           <div class="project-card">
-  <div class="project-video" style="position: relative;">
-    <video loop muted controls poster="./webphoto/photo3.png" width="640" height="360">
-      <source src="https://your-actual-cloud-storage.com/path/video1.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer;">
-      <i class="fas fa-play"></i>
-    </div>
-  </div>
-  <div class="project-info">
-    <h3>Doctor appoint booking website</h3>
-    <p>Complete online booking with custom product pages, cart functionality, and secure checkout.</p>
-    <a href="https://prescripto-akash.vercel.app/" class="project-link">View Full Project</a>
-  </div>
-</div>
+            <div class="project-card">
+                <div class="project-video">
+                    <video loop muted controls poster="./webphoto/photo3.png">
+                        <source src="./webvideo/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Doctor appoint booking website</h3>
+                    <p>Complete online booking with custom product pages, cart functionality, and secure checkout.</p>
+                    <a href="https://prescripto-akash.vercel.app/" class="project-link">View Full Project</a>
+                </div>
+            </div>
             
             <!-- Project 2 -->
             <div class="project-card">
                 <div class="project-video">
-                    <video loop muted poster="/webphoto/photo2.png">
+                    <video loop muted controls poster="./webphoto/photo2.png">
                         <source src="./webvideo/video3.mp4" type="video/mp4">
                     </video>
                     <div class="play-btn">
@@ -836,7 +836,7 @@
             <!-- Project 3 -->
             <div class="project-card">
                 <div class="project-video">
-                    <video loop muted poster="webphoto/photo1.png">
+                    <video loop muted controls poster="./webphoto/photo1.png">
                         <source src="./webvideo/video2.mp4" type="video/mp4">
                     </video>
                     <div class="play-btn">
@@ -849,10 +849,11 @@
                     <a href="https://mr-subarna-roy-profile.vercel.app/" class="project-link">View Full Project</a>
                 </div>
             </div>
-            <!-- project4 -->
+            
+            <!-- Project 4 -->
             <div class="project-card">
                 <div class="project-video">
-                    <video loop muted poster="./webphoto/photo4.png">
+                    <video loop muted controls poster="./webphoto/photo4.png">
                         <source src="./webvideo/video4.mov" type="video/mp4">
                     </video>
                     <div class="play-btn">
@@ -909,12 +910,32 @@
                 <h3>Follow Me</h3>
                 <div class="social-links">
                     <a href="https://www.instagram.com/mr.sayan_roy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/stan.roy.355" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/sayan-roy-11756b28b/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href=" https://github.com/SAYAN7908" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/stan.roy.355" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/sayan-roy-11756b28b/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/SAYAN7908" class="social-link"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-           
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1003,37 +1024,39 @@
         });
 
         // Video play functionality
-        const videoWrappers = document.querySelectorAll('.project-video');
-        
-        videoWrappers.forEach(wrapper => {
+        document.querySelectorAll('.project-video').forEach(wrapper => {
             const video = wrapper.querySelector('video');
             const playBtn = wrapper.querySelector('.play-btn');
             
+            // Hide controls initially
+            video.removeAttribute('controls');
+            
             wrapper.addEventListener('mouseenter', () => {
-                video.play().catch(e => console.log("Video play failed:", e));
+                if (video.paused) {
+                    video.play().catch(e => console.log("Video play failed:", e));
+                }
             });
             
             wrapper.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0;
+                if (!video.paused) {
+                    video.pause();
+                }
             });
             
             playBtn.addEventListener('click', () => {
                 if (video.paused) {
                     video.play().catch(e => console.log("Video play failed:", e));
-                    playBtn.style.opacity = '0';
                 } else {
                     video.pause();
-                    playBtn.style.opacity = '1';
                 }
             });
             
             video.addEventListener('play', () => {
-                playBtn.style.opacity = '0';
+                playBtn.style.display = 'none';
             });
             
             video.addEventListener('pause', () => {
-                playBtn.style.opacity = '1';
+                playBtn.style.display = 'flex';
             });
         });
 
@@ -1079,21 +1102,6 @@
                 this.reset();
             });
         }
-        <script>
-  const playBtn = document.querySelector('.play-btn');
-  const video = document.querySelector('.project-video video');
-
-  playBtn.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      playBtn.style.display = 'none'; // Hide play button while playing
-    } else {
-      video.pause();
-      playBtn.style.display = 'block'; // Show play button when paused
-    }
-  });
-</script>
-
     </script>
 </body>
 </html>
