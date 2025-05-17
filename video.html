@@ -202,6 +202,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: none; /* Initially hidden */
         }
 
         .video-thumbnail {
@@ -212,10 +213,6 @@
             height: 100%;
             object-fit: cover;
             transition: opacity 0.3s ease;
-        }
-
-        .video-container:hover .video-thumbnail {
-            opacity: 0;
         }
 
         .play-icon {
@@ -999,16 +996,23 @@
             videoContainers.forEach(container => {
                 const video = container.querySelector('video');
                 const thumbnail = container.querySelector('.video-thumbnail');
+                const playIcon = container.querySelector('.play-icon');
                 
-                // Create thumbnail from video if not provided
-                if (!thumbnail.src && video) {
-                    createVideoThumbnail(video, container);
+                // Show thumbnail by default
+                if (thumbnail) {
+                    thumbnail.style.display = 'block';
                 }
                 
                 // Hover play functionality
                 container.addEventListener('mouseenter', () => {
                     if (video) {
+                        // Hide thumbnail and show video
+                        if (thumbnail) thumbnail.style.opacity = '0';
+                        video.style.display = 'block';
                         video.play().catch(e => console.log("Autoplay prevented:", e));
+                        
+                        // Hide play icon during playback
+                        if (playIcon) playIcon.style.display = 'none';
                     }
                 });
                 
@@ -1016,11 +1020,22 @@
                     if (video) {
                         video.pause();
                         video.currentTime = 0;
+                        video.style.display = 'none';
+                        
+                        // Show thumbnail again
+                        if (thumbnail) {
+                            thumbnail.style.opacity = '1';
+                            thumbnail.style.display = 'block';
+                        }
+                        
+                        // Show play icon again
+                        if (playIcon) playIcon.style.display = 'flex';
                     }
                 });
                 
                 // Click to open modal
-                container.addEventListener('click', () => {
+                container.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const videoSrc = video ? video.querySelector('source').src : '';
                     if (videoSrc) {
                         openVideoModal(videoSrc);
@@ -1029,29 +1044,13 @@
             });
         };
         
-        // Create thumbnail from video
-        const createVideoThumbnail = (video, container) => {
-            // This is a placeholder - in a real implementation you would:
-            // 1. Extract a frame from the video to use as thumbnail
-            // 2. Or use a server-side generated thumbnail
-            // For now we'll just use a placeholder image
-            const thumbnail = container.querySelector('.video-thumbnail');
-            if (thumbnail) {
-                thumbnail.src = 'https://via.placeholder.com/800x450?text=Video+Thumbnail';
-            }
-        };
-        
         // Open video modal
         const openVideoModal = (videoSrc) => {
             const videoModal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             
-            // Add autoplay parameter to the video URL
-            const autoplaySrc = videoSrc.includes('?') ? 
-                `${videoSrc}&autoplay=1` : 
-                `${videoSrc}?autoplay=1`;
-            
-            modalVideo.src = autoplaySrc;
+            // Create video element for modal
+            modalVideo.src = videoSrc;
             videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         };
@@ -1061,6 +1060,7 @@
             const videoModal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             
+            // Pause and reset video
             modalVideo.src = '';
             videoModal.classList.remove('active');
             document.body.style.overflow = '';
@@ -1073,6 +1073,13 @@
             
             // Close modal event
             document.getElementById('closeModal').addEventListener('click', closeVideoModal);
+            
+            // Close modal when clicking outside
+            document.getElementById('videoModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('videoModal')) {
+                    closeVideoModal();
+                }
+            });
             
             // Immediately show hero section (not waiting for scroll)
             document.querySelector('.video-hero').classList.add('visible');
