@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sayan Roy | Creative Designer & Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         :root {
             --primary: #6c5ce7;
             --primary-light: #a29bfe;
+            --primary-dark: #5649c0;
             --dark: #1e272e;
             --darker: #0f1519;
             --light: #f5f6fa;
+            --lighter: #ffffff;
             --gray: #636e72;
+            --gray-light: #dfe6e9;
             --success: #00b894;
             --danger: #d63031;
+            --warning: #fdcb6e;
+            --info: #0984e3;
         }
 
         * {
@@ -33,16 +39,19 @@
             background-color: var(--darker);
             color: var(--light);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         section {
             padding: 100px 0;
+            position: relative;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
         .section-title {
@@ -50,6 +59,11 @@
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--primary);
         }
 
         .section-title::after {
@@ -65,10 +79,10 @@
 
         .section-subtitle {
             color: var(--primary-light);
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 3rem;
             font-weight: 300;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .btn {
@@ -83,12 +97,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
         }
 
         .btn:hover {
-            background: var(--primary-light);
+            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
         }
 
         .btn-outline {
@@ -96,11 +112,17 @@
             border: 2px solid var(--primary);
             color: var(--primary);
             margin-left: 15px;
+            box-shadow: none;
         }
 
         .btn-outline:hover {
             background: var(--primary);
             color: var(--light);
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
         }
 
         /* Header Styles */
@@ -112,10 +134,12 @@
             z-index: 1000;
             padding: 20px 0;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 21, 25, 0.7);
         }
 
         header.scrolled {
-            background-color: rgba(30, 39, 46, 0.9);
+            background-color: rgba(30, 39, 46, 0.95);
             padding: 15px 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
@@ -131,9 +155,16 @@
             font-weight: 700;
             color: var(--light);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .logo span {
+            color: var(--primary);
+        }
+
+        .logo-icon {
             color: var(--primary);
         }
 
@@ -144,6 +175,7 @@
 
         .nav-links li {
             margin-left: 30px;
+            position: relative;
         }
 
         .nav-links a {
@@ -179,6 +211,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--light);
+            z-index: 1001;
         }
 
         /* Hero Section */
@@ -201,37 +234,65 @@
             z-index: -1;
         }
 
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80') no-repeat center/cover;
+            z-index: -2;
+            opacity: 0.2;
+        }
+
         .hero-content {
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .hero-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             margin-top: 100px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .hero-title span {
             color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: rgba(108, 92, 231, 0.3);
+            z-index: -1;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             color: var(--primary-light);
             font-weight: 300;
+            max-width: 600px;
         }
 
         .hero-btns {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .service-icons {
             display: flex;
             margin-top: 40px;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .service-icon {
@@ -245,12 +306,14 @@
             font-size: 1.5rem;
             color: var(--primary);
             transition: all 0.3s ease;
+            cursor: default;
         }
 
         .service-icon:hover {
             background-color: var(--primary);
             color: var(--light);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
 
         /* About Section */
@@ -268,12 +331,31 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            color: var(--primary-light);
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
-            color: var(--gray);
+            color: var(--gray-light);
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
         }
 
         .stats {
@@ -289,11 +371,13 @@
             border-radius: 10px;
             text-align: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .stat-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(108, 92, 231, 0.3);
         }
 
         .stat-number {
@@ -305,7 +389,7 @@
 
         .stat-text {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--gray-light);
         }
 
         /* Skills Section */
@@ -327,19 +411,20 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .skill-card {
             background-color: var(--dark);
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px 30px;
+            border-radius: 15px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .skill-card::before {
@@ -356,6 +441,7 @@
         .skill-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(108, 92, 231, 0.3);
         }
 
         .skill-icon {
@@ -367,12 +453,29 @@
         .skill-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .skill-desc {
-            color: var(--gray);
+            color: var(--gray-light);
             line-height: 1.8;
             margin-bottom: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--primary-light);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         /* Services Section */
@@ -389,12 +492,13 @@
         .service-card {
             background-color: var(--darker);
             padding: 40px 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .service-card::before {
@@ -411,17 +515,53 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(108, 92, 231, 0.3);
         }
 
         .service-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
         }
 
         .service-card p {
-            color: var(--gray);
+            color: var(--gray-light);
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .service-feature i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .service-feature span {
+            color: var(--gray-light);
+            font-size: 0.9rem;
         }
 
         .service-price {
@@ -429,7 +569,23 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
+
+        .service-price::before {
+            content: '₹';
+            font-size: 1rem;
+        }
+
+        .service-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Content Writing Section */
+       
 
         /* Portfolio Section */
         .portfolio {
@@ -457,18 +613,20 @@
         }
 
         .filter-btn {
-            padding: 8px 20px;
+            padding: 8px 25px;
             background: transparent;
             border: 1px solid var(--primary);
             color: var(--light);
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .filter-btn.active, .filter-btn:hover {
             background: var(--primary);
             color: var(--light);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
 
         .portfolio-grid {
@@ -479,9 +637,10 @@
 
         .portfolio-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .portfolio-img {
@@ -527,6 +686,23 @@
             color: var(--light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
         }
 
         /* Testimonials Section */
@@ -543,10 +719,11 @@
         .testimonial {
             background-color: var(--darker);
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             display: none;
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .testimonial.active {
@@ -562,9 +739,10 @@
         .testimonial-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--gray);
+            color: var(--gray-light);
             margin-bottom: 2rem;
             position: relative;
+            font-style: italic;
         }
 
         .testimonial-text::before, .testimonial-text::after {
@@ -634,6 +812,7 @@
         .rating {
             color: gold;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         /* Contact Section */
@@ -680,10 +859,11 @@
         .contact-text h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--primary-light);
         }
 
         .contact-text p, .contact-text a {
-            color: var(--white);
+            color: var(--gray-light);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -695,18 +875,26 @@
         .contact-form {
             background-color: var(--dark);
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
         .form-control {
             width: 100%;
             padding: 15px;
-            background-color: transparent;
+            background-color: var(--darker);
             border: 1px solid var(--gray);
             border-radius: 5px;
             color: var(--light);
@@ -717,6 +905,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
         }
 
         textarea.form-control {
@@ -738,14 +927,15 @@
         }
 
         .form-submit:hover {
-            background: var(--primary-light);
+            background: var(--primary-dark);
         }
 
-           /* Footer */
+        /* Footer */
         footer {
             background-color: var(--darker);
             padding: 50px 0 20px;
             text-align: center;
+            border-top: 1px solid rgba(108, 92, 231, 0.1);
         }
 
         .footer-logo {
@@ -772,6 +962,7 @@
             color: var(--gray);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
@@ -786,8 +977,8 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-color: var(--dark);
             display: flex;
@@ -801,11 +992,13 @@
         .social-link:hover {
             background-color: var(--primary);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
 
         .copyright {
             color: var(--gray);
             font-size: 0.9rem;
+            margin-top: 2rem;
         }
 
         /* Scroll To Top */
@@ -827,6 +1020,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
         }
 
         .scroll-top.active {
@@ -835,7 +1029,7 @@
         }
 
         .scroll-top:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary-dark);
             transform: translateY(-5px);
         }
 
@@ -872,13 +1066,19 @@
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             .about-content {
@@ -887,6 +1087,10 @@
 
             .stats {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -897,15 +1101,18 @@
 
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
+                width: 80%;
+                height: 100vh;
                 background-color: var(--dark);
                 flex-direction: column;
                 align-items: center;
-                padding-top: 50px;
+                justify-content: center;
+                padding-top: 80px;
                 transition: all 0.5s ease;
+                z-index: 1000;
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
             }
 
             .nav-links.active {
@@ -917,8 +1124,12 @@
             }
 
             .hero-title {
-                font-size: 2.5rem;
-               
+                font-size: 2.2rem;
+                margin-top: 80px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .hero-btns {
@@ -928,11 +1139,15 @@
 
             .btn-outline {
                 margin-left: 0;
-                margin-top: 15px;
+                margin-top: 0;
             }
 
             .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .testimonial {
+                padding: 30px 20px;
             }
         }
 
@@ -956,6 +1171,10 @@
             .contact-form {
                 padding: 30px 20px;
             }
+
+            .service-btns {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -963,7 +1182,7 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">Digital<span>Creative</span></a>
+            <a href="#" class="logo"><i class="fas fa-magic logo-icon"></i>Digital<span>Creative</span></a>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -981,26 +1200,30 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title animate">Hi, I'm <span>Sayan Roy</span> — I Design, Edit & Promote to Help Brands Stand Out Online</h1>
-                <p class="hero-subtitle animate delay-1">A creative freelancer offering high-impact web design, video editing, graphic design, and paid promotion services for creators, entrepreneurs, and businesses.</p>
+                <h1 class="hero-title animate">Hi, I'm <span>Sayan Roy</span> — Creative Designer & Developer</h1>
+                <p class="hero-subtitle animate delay-1">I help brands and creators stand out with stunning web design, engaging video content, and strategic digital promotion. Let's bring your vision to life!</p>
                 <div class="hero-btns animate delay-2">
                     <a href="#contact" class="btn">Get a Free Quote</a>
                     <a href="#portfolio" class="btn btn-outline">View My Work</a>
                 </div>
                 <div class="service-icons animate delay-3">
-                    <div class="service-icon">
+                    <div class="service-icon" title="Web Development">
                         <i class="fas fa-code"></i>
                     </div>
-                    <div class="service-icon">
+                    <div class="service-icon" title="Video Editing">
                         <i class="fas fa-film"></i>
                     </div>
-                    <div class="service-icon">
+                    <div class="service-icon" title="Graphic Design">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <div class="service-icon">
+                    <div class="service-icon" title="Digital Marketing">
                         <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="service-icon" title="Content Writing">
+                        <i class="fas fa-pen-fancy"></i>
                     </div>
                 </div>
             </div>
@@ -1011,26 +1234,26 @@
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title animate">About <span>Me</span></h2>
-            <p class="section-subtitle animate delay-1">Get to know me better</p>
+            <p class="section-subtitle animate delay-1">Get to know the person behind the work</p>
             
             <div class="about-content">
                 <div class="about-text animate">
-                    <h3>Professional Designer & Developer</h3>
-                    <p>I'm a full-stack creative with 3+ years of experience helping clients build powerful digital identities. Whether it's a stunning website, scroll-stopping video, or branding that pops — I deliver design that drives results.</p>
-                    <p>Driven by design, powered by creativity — I take your ideas and turn them into digital reality.</p>
+                    <h3>Full-Stack Creative Professional</h3>
+                    <p>With over 3 years of experience in the digital space, I've helped clients from various industries establish powerful online presences. My journey began with graphic design, expanded into web development, and grew to encompass video production and digital marketing.</p>
+                    <p>What sets me apart is my ability to understand both the creative and technical aspects of digital projects. I don't just create beautiful designs—I build solutions that drive real results for your business or personal brand.</p>
                     
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-number">50+</div>
-                            <div class="stat-text">Projects Delivered</div>
+                            <div class="stat-text">Projects Completed</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">10+</div>
-                            <div class="stat-text">Countries</div>
+                            <div class="stat-text">Countries Served</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">24hr</div>
-                            <div class="stat-text">Response Time</div>
+                            <div class="stat-text">Avg. Response Time</div>
                         </div>
                     </div>
                 </div>
@@ -1045,7 +1268,7 @@
     <section class="skills" id="skills">
         <div class="container">
             <h2 class="section-title animate">My <span>Skills</span></h2>
-            <p class="section-subtitle animate delay-1">What I bring to the table</p>
+            <p class="section-subtitle animate delay-1">The tools and technologies I work with</p>
             
             <div class="skills-grid">
                 <div class="skill-card animate">
@@ -1053,7 +1276,15 @@
                         <i class="fas fa-code"></i>
                     </div>
                     <h3 class="skill-title">Web Development</h3>
-                    <p class="skill-desc">HTML, CSS, JavaScript ,php, mysql, react,node js,express js,mongodb etc.., Responsive Design, Animations</p>
+                    <p class="skill-desc">Building responsive, fast, and SEO-friendly websites that convert visitors into customers.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
                 </div>
                 
                 <div class="skill-card animate delay-1">
@@ -1061,7 +1292,14 @@
                         <i class="fas fa-film"></i>
                     </div>
                     <h3 class="skill-title">Video Editing</h3>
-                    <p class="skill-desc">Reels, Shorts, YouTube Videos, Promo Edits, adobe premiere pro ,adobe after effects</p>
+                    <p class="skill-desc">Creating engaging video content optimized for social media platforms and marketing campaigns.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Premiere Pro</span>
+                        <span class="skill-tag">After Effects</span>
+                        <span class="skill-tag">DaVinci Resolve</span>
+                        <span class="skill-tag">Motion Graphics</span>
+                        <span class="skill-tag">Color Grading</span>
+                    </div>
                 </div>
                 
                 <div class="skill-card animate delay-2">
@@ -1069,16 +1307,47 @@
                         <i class="fas fa-paint-brush"></i>
                     </div>
                     <h3 class="skill-title">Graphic Design</h3>
-                    <p class="skill-desc">Logos, Thumbnails, Business Cards, Social Posts,adobe photoshop</p>
+                    <p class="skill-desc">Designing visually stunning graphics that communicate your brand's message effectively.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Illustrator</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Brand Identity</span>
+                        <span class="skill-tag">UI/UX</span>
+                    </div>
                 </div>
                 
                 <div class="skill-card animate delay-3">
                     <div class="skill-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3 class="skill-title">Digital Promotion</h3>
-                    <p class="skill-desc">YouTube/Instagram Growth, Organic + Paid Strategy ,smm panel</p>
+                    <h3 class="skill-title">Digital Marketing</h3>
+                    <p class="skill-desc">Growing your online presence through strategic promotion and audience engagement.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Social Media</span>
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">PPC Ads</span>
+                        <span class="skill-tag">Content Strategy</span>
+                        <span class="skill-tag">Analytics</span>
+                    </div>
                 </div>
+                <div class="skill-card animate delay-4">
+                    <div class="skill-icon">
+                        <i class="fas fa-pen-nib"></i> 
+                    </div>
+                    <h3 class="skill-title">Content Writing</h3>
+                    <p class="skill-desc">
+                        Crafting engaging, SEO-optimized, and audience-driven content for blogs, social media, and video platforms to boost brand visibility and engagement.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SEO Writing</span>
+                        <span class="skill-tag">Blog Posts</span>
+                        <span class="skill-tag">YouTube Scripts</span>
+                        <span class="skill-tag">Social Media</span>
+                        <span class="skill-tag">Creative Writing</span>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -1087,105 +1356,226 @@
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title animate">My <span>Services</span></h2>
-            <p class="section-subtitle animate delay-1">What I can do for you</p>
+            <p class="section-subtitle animate delay-1">Comprehensive solutions for your digital needs</p>
             
             <div class="services-grid">
                 <div class="service-card animate">
                     <h3>🎨 Graphic Design</h3>
                     <p>Custom visuals that match your brand: YouTube thumbnails, banners, business cards, and more.</p>
-                    <div class="service-price"></div>
-                    <a href="photo.html" class="btn btn-outline">Project</a>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Logo & Brand Identity</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Social Media Graphics</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Print & Marketing Materials</span>
+                        </div>
+                    </div>
+                    <div class="service-price">Custom Pricing</div>
+                    <div class="service-btns">
+                        <a href="photo.html" class="btn btn-sm">View Projects</a>
+                        <a href="#contact" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
                 </div>
                 
                 <div class="service-card animate delay-1">
                     <h3>🎬 Video Editing</h3>
                     <p>Polished edits with effects, music, transitions for Reels, Shorts, YouTube, or business promos.</p>
-                    <div class="service-price"></div>
-                    <a href="video.html" class="btn btn-outline">Project</a>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Social Media Clips</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>YouTube Videos</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Commercial & Promo Videos</span>
+                        </div>
+                    </div>
+                    <div class="service-price">Custom Pricing</div>
+                    <div class="service-btns">
+                        <a href="video.html" class="btn btn-sm">View Projects</a>
+                        <a href="#contact" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
                 </div>
                 
                 <div class="service-card animate delay-2">
                     <h3>🌐 Website Design</h3>
                     <p>Fully responsive, modern websites built to convert — personal brands, business sites, and landing pages.</p>
-                    <div class="service-price"></div>
-                    <a href="web.html" class="btn btn-outline">Project</a>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Business Websites</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>E-commerce Stores</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Portfolio Sites</span>
+                        </div>
+                    </div>
+                    <div class="service-price">Custom Pricing</div>
+                    <div class="service-btns">
+                        <a href="web.html" class="btn btn-sm">View Projects</a>
+                        <a href="#contact" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
                 </div>
                 
                 <div class="service-card animate delay-3">
-                    <h3>🚀 Paid Promotions</h3>
+                    <h3>🚀 Digital Promotion</h3>
                     <p>Strategic Instagram and YouTube promotions to grow your brand organically and boost visibility.</p>
-                    <div class="service-price"></div>
-                    <a href="#contact" class="btn btn-outline"></a>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Social Media Growth</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Paid Advertising</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Content Strategy</span>
+                        </div>
+                    </div>
+                    <div class="service-price">Custom Pricing</div>
+                    <div class="service-btns">
+                        <a href="#portfolio" class="btn btn-sm">View Projects</a>
+                        <a href="#contact" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
                 </div>
+                <div class="service-card animate delay-2">
+                    <h3>✍️ Content Writing</h3>
+                    <p>
+                        Professional content writing services tailored for YouTube, social media, and online branding. Boost engagement with SEO-friendly, creative, and audience-targeted content.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>YouTube Scripts</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Social Media Captions</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Post & Article Writing</span>
+                        </div>
+                    </div>
+                    <div class="service-price">Custom Pricing</div>
+                    <div class="service-btns">
+                        <a href="content.html" class="btn btn-sm">View Projects</a>
+                        <a href="index.html#contact" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
 
+    <!-- Content Writing Section -->
+    
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <h2 class="section-title animate">Work That <span>Speaks</span></h2>
-            <p class="section-subtitle animate delay-1">Some of my recent projects</p>
+            <p class="section-subtitle animate delay-1">Some of my recent projects across different services</p>
             
             <div class="portfolio-filter animate">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="design">Graphic Design</button>
                 <button class="filter-btn" data-filter="video">Video Editing</button>
                 <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="content">Content</button>
             </div>
             
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-category="design">
-                    <img src="./photo/photo2.png" alt="Design Project" class="portfolio-img">
+                    <img src="./photo/photo2.png" alt="YouTube Thumbnail Design" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h3>YouTube Thumbnail Design</h3>
                         <p>Custom thumbnail designs for a gaming creator that increased CTR by 35%.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Photoshop</span>
+                            <span class="portfolio-tag">Thumbnail</span>
+                        </div>
                         <a href="photo.html" class="btn">View Project</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item" data-category="video">
-                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Video Project" class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fitness Reel Edit" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h3>Fitness Reel Edit</h3>
                         <p>Engaging reel edit for fitness coach that gained 5k+ views organically.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Premiere Pro</span>
+                            <span class="portfolio-tag">Motion Graphics</span>
+                        </div>
                         <a href="video.html" class="btn">View Project</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item" data-category="web">
-                    <img src="/webphoto/photo4.png" alt="Web Project" class="portfolio-img">
+                    <img src="/webphoto/photo4.png" alt="E-commerce Website" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h3>E-commerce Website</h3>
                         <p>Responsive online store for local business with 30% increase in conversions.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Node.js</span>
+                        </div>
                         <a href="web.html" class="btn">View Project</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Design Project" class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Brand Identity Package" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h3>Brand Identity Package</h3>
                         <p>Complete branding including logo, business cards and social media assets.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Logo Design</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
                         <a href="photo.html" class="btn">View Project</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item" data-category="video">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Video Project" class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Travel Vlog Series" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h3>Travel Vlog Series</h3>
                         <p>Complete video editing for travel vlog with color grading and sound design.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Color Grading</span>
+                            <span class="portfolio-tag">Sound Design</span>
+                        </div>
                         <a href="video.html" class="btn">View Project</a>
                     </div>
                 </div>
                 
-                <div class="portfolio-item" data-category="web">
-                    <img src="/webphoto/photo1.png" alt="Web Project" class="portfolio-img">
+                <div class="portfolio-item" data-category="content">
+                    <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="YouTube Scriptwriting" class="portfolio-img">
                     <div class="portfolio-overlay">
-                        <h3>Portfolio Website</h3>
-                        <p>Custom portfolio site for photographer with CMS integration.</p>
-                        <a href="web.html" class="btn">View Project</a>
+                        <h3>YouTube Scriptwriting</h3>
+                        <p>Engaging scripts for tech review channel that increased average watch time by 40%.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Scriptwriting</span>
+                            <span class="portfolio-tag">SEO</span>
+                        </div>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1207,9 +1597,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">Sayan's video editing gave my content a professional edge. Fast, reliable, creative. He understood exactly what I needed and delivered beyond expectations.</p>
+                    <p class="testimonial-text">Sayan's video editing gave my content a professional edge. Fast, reliable, creative. He understood exactly what I needed and delivered beyond expectations. My engagement rates improved significantly after working with him.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="author-img">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-img">
                         <h4 class="author-name">Sarah Johnson</h4>
                         <p class="author-role">YouTube Content Creator</p>
                     </div>
@@ -1223,9 +1613,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">He built my site in 4 days and it looks amazing — super responsive and clean. My business has seen a 40% increase in inquiries since launching the new website.</p>
+                    <p class="testimonial-text">He built my site in 4 days and it looks amazing — super responsive and clean. My business has seen a 40% increase in inquiries since launching the new website. Sayan was patient with all my requests and delivered perfection.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="author-img">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-img">
                         <h4 class="author-name">Michael Chen</h4>
                         <p class="author-role">CEO, TechStart Inc.</p>
                     </div>
@@ -1239,11 +1629,27 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="testimonial-text">The Instagram growth strategy Sayan implemented helped me gain 5,000 real followers in 2 months. His paid promotion tactics are incredibly effective.</p>
+                    <p class="testimonial-text">The Instagram growth strategy Sayan implemented helped me gain 5,000 real followers in 2 months. His paid promotion tactics are incredibly effective. He also designed stunning graphics that perfectly represent my brand.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="author-img">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="author-img">
                         <h4 class="author-name">Emily Rodriguez</h4>
                         <p class="author-role">Fitness Influencer</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">The YouTube scripts Sayan wrote for my tech channel have dramatically improved my watch time and subscriber growth. He understands how to structure content for maximum engagement while keeping it authentic to my voice.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim" class="author-img">
+                        <h4 class="author-name">David Kim</h4>
+                        <p class="author-role">Tech YouTuber</p>
                     </div>
                 </div>
                 
@@ -1251,6 +1657,7 @@
                     <div class="slider-dot active" data-slide="0"></div>
                     <div class="slider-dot" data-slide="1"></div>
                     <div class="slider-dot" data-slide="2"></div>
+                    <div class="slider-dot" data-slide="3"></div>
                 </div>
             </div>
         </div>
@@ -1260,7 +1667,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title animate">Let's Build <span>Something</span></h2>
-            <p class="section-subtitle animate delay-1">Whether you need a website, a design refresh, or a promo video, I'm just a message away.</p>
+            <p class="section-subtitle animate delay-1">Ready to take your digital presence to the next level? Get in touch today!</p>
             
             <div class="contact-content">
                 <div class="contact-info animate">
@@ -1284,8 +1691,14 @@
                         </div>
                     </div>
                     
-                    
-                        
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <a href=""></a>
+                        </div>
                     </div>
                     
                     <div class="contact-item">
@@ -1294,11 +1707,57 @@
                         </div>
                         <div class="contact-text">
                             <h3>Working Hours</h3>
-                            <p>everyday 10am - 10pm IST</p>
+                            <p>Monday - Sunday: 10am - 10pm IST</p>
                         </div>
                     </div>
 
-                   
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Social Media</h3>
+                            <div class="social-links" style="justify-content: flex-start; gap: 15px; margin-top: 10px;">
+                                <a href="https://www.instagram.com/mr.sayan_roy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link" style="width: 35px; height: 35px; font-size: 1rem;"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/stan.roy.355" class="social-link" style="width: 35px; height: 35px; font-size: 1rem;"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/in/sayan-roy-11756b28b/" class="social-link" style="width: 35px; height: 35px; font-size: 1rem;"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/SAYAN7908" class="social-link" style="width: 35px; height: 35px; font-size: 1rem;"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="contact-form animate delay-1">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service Needed</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="web">Web Design</option>
+                                <option value="graphic">Graphic Design</option>
+                                <option value="video">Video Editing</option>
+                                <option value="promotion">Digital Promotion</option>
+                                <option value="content">Content Writing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="Tell me about your project" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -1309,6 +1768,7 @@
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
+                <a href="#skills">Skills</a>
                 <a href="#services">Services</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#testimonials">Testimonials</a>
@@ -1316,10 +1776,10 @@
             </div>
             
             <div class="social-links">
-                <a href="https://www.instagram.com/mr.sayan_roy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/stan.roy.355" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/sayan-roy-11756b28b/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href=" https://github.com/SAYAN7908" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/mr.sayan_roy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/stan.roy.355" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/sayan-roy-11756b28b/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/SAYAN7908" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
             
             <p class="copyright">&copy; 2023 Sayan Roy. All Rights Reserved.</p>
@@ -1397,6 +1857,7 @@
         const testimonials = document.querySelectorAll('.testimonial');
         const dots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
+        let slideInterval;
 
         function showSlide(index) {
             testimonials.forEach(testimonial => testimonial.classList.remove('active'));
@@ -1407,17 +1868,26 @@
             currentSlide = index;
         }
 
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            showSlide(currentSlide);
+        }
+
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
                 showSlide(index);
+                startSlider();
             });
         });
 
-        // Auto slide change
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % testimonials.length;
-            showSlide(currentSlide);
-        }, 5000);
+        function startSlider() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Start the slider
+        startSlider();
 
         // Scroll animation
         const animateElements = document.querySelectorAll('.animate');
@@ -1436,17 +1906,23 @@
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
 
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
+        // // Form submission
+        // const contactForm = document.getElementById('contactForm');
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        // contactForm.addEventListener('submit', (e) => {
+        //     e.preventDefault();
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
+        //     // Get form values
+        //     const name = document.getElementById('name').value;
+        //     const email = document.getElementById('email').value;
+        //     const service = document.getElementById('service').value;
+        //     const message = document.getElementById('message').value;
+            
+        //     // Here you would typically send the form data to a server
+        //     // For this example, we'll just show an alert
+        //     alert(`Thank you for your message, ${name}! I will get back to you soon about your ${service} inquiry.`);
+        //     contactForm.reset();
+        // });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
