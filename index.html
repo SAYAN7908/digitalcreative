@@ -1066,116 +1066,274 @@
         }
 
         /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
+       /* Responsive Styles - Optimized for Mobile */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navigation */
+    .menu-btn {
+        display: block;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--dark);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 0 80px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        margin-top: 60px;
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-outline {
+        margin-left: 0;
+    }
+
+    .service-icons {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    /* General Sections */
+    section {
+        padding: 70px 0;
+    }
+
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item {
+        height: auto;
+    }
+
+    .portfolio-img {
+        height: 200px;
+    }
+
+    /* Testimonials */
+    .testimonial {
+        padding: 25px 20px;
+    }
+
+    /* Forms */
+    .form-control {
+        padding: 12px;
+    }
+
+    /* Prevent zoom on input focus for iOS */
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        input,
+        select,
+        textarea {
+            font-size: 16px !important;
         }
+    }
+}
 
-        @media (max-width: 992px) {
-            .section-title {
-                font-size: 2.2rem;
-            }
+@media (max-width: 576px) {
+    /* Typography */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
 
-            .hero-title {
-                font-size: 2.5rem;
-            }
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
 
-            .about-content {
-                grid-template-columns: 1fr;
-            }
+    .hero-title {
+        font-size: 1.8rem;
+    }
 
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
+    /* Stats */
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-item {
+        padding: 15px;
+    }
+
+    /* Cards */
+    .skill-card,
+    .service-card {
+        padding: 30px 20px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+        padding: 25px 15px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Viewport height fix for mobile */
+    @media (max-height: 700px) and (orientation: portrait) {
+        .hero {
+            min-height: 700px;
         }
+    }
 
-        @media (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100vh;
-                background-color: var(--dark);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding-top: 80px;
-                transition: all 0.5s ease;
-                z-index: 1000;
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-            }
-
-            .hero-title {
-                font-size: 2.2rem;
-                margin-top: 80px;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 0;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-
-            .testimonial {
-                padding: 30px 20px;
-            }
+    /* iOS specific fixes */
+    @supports (-webkit-touch-callout: none) {
+        /* Fix for Safari viewport height issue */
+        .hero {
+            min-height: -webkit-fill-available;
+            height: -webkit-fill-available;
         }
-
-        @media (max-width: 576px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 30px 20px;
-            }
-
-            .service-btns {
-                flex-direction: column;
-            }
+        
+        /* Fix for sticky hover effects on iOS */
+        .service-icon, .btn, .social-link {
+            -webkit-tap-highlight-color: transparent;
         }
+    }
+}
+
+/* Very Small Devices (e.g., iPhone SE) */
+@media (max-width: 375px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .portfolio-filter {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+
+    .service-btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-outline {
+        margin-left: 0;
+    }
+}
+
+/* Orientation-specific adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 100px 0 50px;
+    }
+    
+    .hero-title {
+        margin-top: 40px;
+        font-size: 2rem;
+    }
+    
+    .nav-links {
+        padding-top: 60px;
+    }
+}
+
+/* Pixel density adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .btn, .filter-btn, .form-submit {
+        -webkit-font-smoothing: antialiased;
+    }
+}
     </style>
 </head>
 <body>
